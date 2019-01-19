@@ -1,29 +1,57 @@
 <div class="app">
-
-  <div class="header"></div>
-
-  <div class="body-element">
-    <div class="body-background">
-      <div class="body-header">
-        <img src="../assets/image/motoracer.png"/>
-      </div>
-    </div>
-    <div class="body-foreground">
-
-      <div class="app-header">
-        <span class="title">Moto World</span>
-        <span class="sub-title">Интернет магазин мототехники</span>
-        <div class="opportunities-tab"></div>
-      </div>
-      <div class="content-block">
-        <app-authorization></app-authorization>
-      </div>
-
+  <div class="navbar">
+    <div class="logo"><img src="../assets/image/logo.png"></div>
+    <ul>
+      <li><a routerLink="/">Главная</a></li>
+      <li><a routerLink="">Личный кабинет</a></li>
+      <li><a routerLink="/info">О магазине</a></li>
+      <li><a routerLink="/contacts">Контакты</a></li>
+      <li><a routerLink="/">Корзина</a></li>
+    </ul>
+    <div class="btn-admin">ADMIN Stuff</div>
+  </div>
+  <div class="header">
+    
+   
+    <div class="banner">
+        <h1>Moto World</h1>
+        <p>Интернет магазин мототехники</p>
+      <img src="../assets/image/banner.png">
     </div>
   </div>
 
-  <div class="footer"></div>
+  <router-outlet></router-outlet>
 
+  <footer>
+      2018 © <span>NIGHTCOMPANY</span> all rights reserved
+  </footer>
 </div>
 
-<router-outlet></router-outlet>
+
+<!-- 
+
+<div class="header"></div>
+
+<div class="body-element">
+  <div class="body-background">
+    <div class="body-header">
+      <img src="../assets/image/motoracer.png"/>
+    </div>
+  </div>
+  <div class="body-foreground">
+
+    <div class="app-header">
+      <span class="title">Moto World</span>
+      <span class="sub-title">Интернет магазин мототехники</span>
+      <div class="opportunities-tab"></div>
+    </div>
+    <div class="content-block">
+      <app-authorization></app-authorization>
+      <app-home></app-home>
+    </div>
+
+  </div>
+</div> 
+
+<div class="footer"></div>
+-->
