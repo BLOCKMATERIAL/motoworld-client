@@ -1,65 +1,22 @@
 <div class="container">
 
   <div class="menu">
-    <ul class="ul-main">
-      <li>
-        <a href="">Запчасти</a>
-        <ul class="ul-sub">
-          <li><a href="">-Глушители</a></li>
-          <li><a href="">-Глушители</a></li>
-          <li><a href="">-Глушители</a></li>
-          <li><a href="">-Глушители</a></li>
-          <li><a href="">-Глушители</a></li>
-          <li><a href="">-Глушители</a></li>
-          <li><a href="">-Глушители</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="">Экипировка</a>
-        <ul class="ul-sub">
-            <li><a href="">-Мотошлемы</a></li>
-            <li><a href="">-Мотошлемы</a></li>
-            <li><a href="">-Мотошлемы</a></li>
-            <li><a href="">-Мотошлемы</a></li>
-            <li><a href="">-Мотошлемы</a></li>
-            <li><a href="">-Мотошлемы</a></li>
-            <li><a href="">-Мотошлемы</a></li>
-          </ul>
+    <ul class="ul-main" >
+      <li (click)=retrieveProducts()>All</li>
+      <li *ngFor="let category of categories" (click)=onCategoryChanged(category)>
+        <a>{{category.name}}</a>
       </li>
     </ul>
   </div>
   <div class="items-wrapper">
-    <div class="box">
+    <div class="box"  *ngFor="let product of products">
         <img src="../../../assets/icon/ic_google.png" alt="">
-        <h1>FUCKING SHLEM</h1>
-        <p>100$</p>
+        <h1>{{product.name}}</h1>
+        <p>{{product.description}}</p>
+        <p class="price">{{product.price}}$</p>
         <button>КУПИТЬ</button>
     </div>
-    <div class="box">
-        <img src="../../../assets/icon/ic_google.png" alt="">
-        <h1>FUCKING SHLEM</h1>
-        <p>100$</p>
-        <button>КУПИТЬ</button>
-    </div>
-    <div class="box">
-        <img src="../../../assets/icon/ic_google.png" alt="">
-        <h1>FUCKING SHLEM</h1>
-        <p>100$</p>
-        <button>КУПИТЬ</button>
-    </div>
-    <div class="box">
-        <img src="../../../assets/icon/ic_google.png" alt="">
-        <h1>FUCKING SHLEM</h1>
-        <p>100$</p>
-        <button>КУПИТЬ</button>
-    </div>
-    <div class="box">
-        <img src="../../../assets/icon/ic_google.png" alt="">
-        <h1>FUCKING SHLEM</h1>
-        <p>100$</p>
-        <button>КУПИТЬ</button>
-    </div>
-   
+
   </div>
 </div>
 
