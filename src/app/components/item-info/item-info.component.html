@@ -1,33 +1,14 @@
 <div class="container">
-  <h1>Fucking Shlem</h1>
+  <h1>{{name}}</h1>
   <div class="content">
       <div class="image-area">
-        <img src="../../../assets/image/helmet.png">
+        <img [src]="image">
       </div>
       <div class="action-area">
-          <h1>100$</h1>
-          <table style="border-color:black">
-              <tr>
-                <td>Цвет</td>
-                <td>Черный</td>
-              </tr>
-              <tr>
-                <td>Размер</td>
-                <td>L</td>
-              </tr>
-              <tr>
-                <td>Пол</td>
-                <td>Унисекс</td>
-              </tr>
-              <tr>
-                <td>Защита</td>
-                <td>2й уровень</td>
-              </tr>
-          </table>
-          <button><img src="../../../assets/icon/ic_cart.png" /><span>Добавить в корзину</span></button>
+          <span>{{description}}</span>
+          <button (click)="addToCart()" ><img src="../../../assets/icon/ic_cart.png" /><span>Добавить в корзину</span></button>
       </div>
   </div>
- 
 
   <article>
     <h2>О товаре</h2>

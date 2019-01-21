@@ -16,6 +16,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { DialogproductsComponent } from './components/dialogproducts/dialogproducts.component';
 import { DialogcategoriesComponent } from './components/dialogcategories/dialogcategories.component';
+import { CartListItemComponent } from './components/cart-list-item/cart-list-item.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { DialogcategoriesComponent } from './components/dialogcategories/dialogc
     ItemInfoComponent,
     AccountComponent,
     DialogproductsComponent,
-    DialogcategoriesComponent
+    DialogcategoriesComponent,
+    CartListItemComponent
   ],
   imports: [
     BrowserModule,

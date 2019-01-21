@@ -6,7 +6,9 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./home.component.styl']
 })
 export class HomeComponent implements OnInit {
-  orders = [];
+  products = [];
+  categories = [];
+  chosenCategory = null;
 
   constructor() {
   }
@@ -15,16 +17,32 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit() {
-    this.retrieveOrders();
+    this.retrieveProducts();
+    this.retrieveCategories();
   }
 
-  retrieveOrders() {
-    fetch('http://motoworld.me/orders')
+  retrieveProducts() {
+    fetch('http://motoworld.me/products?pageSize=1')
       .then(resp => resp.json())
       .then(data => {
-        this.orders = data;
+        this.products = data;
       });
   }
 
+  retrieveCategories() {
+    fetch('http://motoworld.me/categories')
+      .then(resp => resp.json())
+      .then(data => {
+        this.categories = data;
+      });
+  }
 
+  onCategoryChanged(category) {
+    console.log(category);
+    fetch(`http://motoworld.me/categories/${category._id}/products`)
+      .then(resp => resp.json())
+      .then(data => {
+        this.products = data;
+      });
+  }
 }

@@ -1,48 +1,37 @@
 import { Component, OnInit } from '@angular/core';
+import {CartItem} from "../../services/cart/CartItem";
+import {CartService} from "../../services/cart/cart.service";
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.styl']
-})
-export class CartComponent implements OnInit {
-  products = [];
-  categories = [];
-  chosenCategory = null;
+  styleUrls: ['./cart.component.styl'],
+  providers: [CartService]
 
-  constructor() {
+})
+export class CartComponent implements OnInit, OnItemInteract {
+
+  items: CartItem[] = [];
+  callback: OnItemInteract;
+
+  constructor(private service: CartService) {
+    this.refresh();
+    this.callback = this;
   }
 
-//call the fetch function
-
+  refresh() {
+    this.items = this.service.getStoredCart();
+  }
 
   ngOnInit() {
-    this.retrieveProducts();
-    this.retrieveCategories();
   }
 
-  retrieveProducts() {
-    fetch('http://motoworld.me/products?pageSize=1')
-      .then(resp => resp.json())
-      .then(data => {
-        this.products = data;
-      });
+  onItemQuantityChanged(id: string, increase: boolean) {
+    this.service.changeQuantity(id, increase);
   }
 
-  retrieveCategories() {
-    fetch('http://motoworld.me/categories')
-      .then(resp => resp.json())
-      .then(data => {
-        this.categories = data;
-      });
-  }
-
-  onCategoryChanged(category) {
-    console.log(category);
-    fetch(`http://motoworld.me/categories/${category._id}/products`)
-      .then(resp => resp.json())
-      .then(data => {
-        this.products = data;
-      });
+  onItemRemoved(id: string) {
+    this.service.remove(id);
+    this.refresh();
   }
 }

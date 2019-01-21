@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'authorization', component: AuthorizationComponent },
   { path: 'info', component: InfoComponent },
-  { path: 'item-info', component: ItemInfoComponent },
+  { path: 'item-info/:currentItemId', component: ItemInfoComponent },
   { path: 'contacts', component: ContactsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'dialogproducts', component: DialogproductsComponent},
