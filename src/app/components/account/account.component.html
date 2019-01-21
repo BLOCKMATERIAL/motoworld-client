@@ -1,0 +1,12 @@
+<div class="container">
+
+  <div class="menu">
+    <ul class="ul-main">
+      <li *ngFor="let type of objectTypes" (click)="onTypeChosen(type)">
+        <span>{{type.name}}</span>
+        <button> <a routerLink="/dialogproducts">Создать</a></button>
+      </li>
+    </ul>
+  </div>
+</div>
+<router-outlet></router-outlet>

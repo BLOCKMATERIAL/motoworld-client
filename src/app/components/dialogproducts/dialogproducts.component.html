@@ -1,0 +1,45 @@
+<div class="container">
+
+  <button type="button" class="btn btn-info"
+          (click)="openModal(template)">Создать продукт</button>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Добавление товара</h4>
+      <button type="button" class="close pull-right"
+              aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="recipient-name" class="col-form-label">Название товара</label>
+          <input type="text" class="form-control" id="recipient-name">
+          <label for="recipient-name" class="col-form-label">Цена товара</label>
+          <input type="text" class="form-control" id="recipient-price">
+        </div>
+        <p>Выберите категорию</p>
+        <select class="select">
+          <option>Шлем</option>
+          <option>Ноги</option>
+          <option>Очки</option>
+          <option>Рукавицы</option>
+        </select>
+
+        <div class="form-group">
+          <label for="message-text" class="col-form-label">Описание товара</label>
+          <textarea class="form-control" id="message-text"></textarea>
+        </div>
+        <form><input type="file" (change)="onFileChanged($event)">
+        </form>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary">Добавить</button>
+    </div>
+  </ng-template>
+
+</div>

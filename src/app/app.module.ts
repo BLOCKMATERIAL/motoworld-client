@@ -10,6 +10,13 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { CartComponent } from './components/cart/cart.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ItemInfoComponent } from './components/item-info/item-info.component';
+import { AccountComponent } from './components/account/account.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
+import { DialogproductsComponent } from './components/dialogproducts/dialogproducts.component';
+import { DialogcategoriesComponent } from './components/dialogcategories/dialogcategories.component';
+
 
 @NgModule({
   declarations: [
@@ -20,13 +27,18 @@ import { ItemInfoComponent } from './components/item-info/item-info.component';
     ContactsComponent,
     CartComponent,
     RegistrationComponent,
-    ItemInfoComponent
+    ItemInfoComponent,
+    AccountComponent,
+    DialogproductsComponent,
+    DialogcategoriesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ModalModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
