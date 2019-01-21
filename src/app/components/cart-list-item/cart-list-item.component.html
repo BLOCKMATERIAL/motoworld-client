@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="item-list">
+    <div class="item">
+      <div class="item-img">
+        <img [src]="image">
+      </div>
+      <div class="description">
+
+
+        <div class="top-section">
+          <h1>{{name}}</h1>
+          <a><img (click)="onItemRemoved()"  src="../../../assets/icon/delete.png"></a>
+        </div>
+        <!-- Jquery code is here https://foundation.zurb.com/building-blocks/blocks/plus-minus-input.html -->
+        <div class="plus-minus-input">
+          <div class="input-group-button">
+            <button type="button" data-quantity="minus" data-field="quantity" (click)="onItemQuantityChanged(false)">
+              -
+            </button>
+          </div>
+
+          <input class="input-group-field" type="number" name="quantity" value="{{item.count}}">
+
+          <div class="input-group-button">
+            <button type="button" data-quantity="plus" data-field="quantity" (click)="onItemQuantityChanged(true)">
+              +
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
