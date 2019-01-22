@@ -11,6 +11,8 @@ import { AccountComponent } from './components/account/account.component';
 import {DialogproductsComponent} from "./components/dialogproducts/dialogproducts.component";
 import {DialogcategoriesComponent} from "./components/dialogcategories/dialogcategories.component";
 import {EmptyorderComponent} from "./components/emptyorder/emptyorder.component";
+import {DialoguserinfoComponent} from "./components/dialoguserinfo/dialoguserinfo.component";
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,7 +25,9 @@ const routes: Routes = [
   { path: 'products/:id', component: DialogproductsComponent},
   { path: 'categories/:id', component: DialogcategoriesComponent},
   { path: 'account', component: AccountComponent},
-  { path: 'emptyorder', component: EmptyorderComponent}
+  { path: 'emptyorder', component: EmptyorderComponent},
+  { path: 'dialoguseinfo', component: DialoguserinfoComponent}
+
 
 ];
 
