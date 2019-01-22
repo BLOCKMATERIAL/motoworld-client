@@ -21,6 +21,8 @@ import { CartListItemComponent } from './components/cart-list-item/cart-list-ite
 import {FormsModule} from "@angular/forms";
 import { DialogordersComponent } from './components/dialogorders/dialogorders.component';
 import { EmptyorderComponent } from './components/emptyorder/emptyorder.component';
+import { DialoguserinfoComponent } from './components/dialoguserinfo/dialoguserinfo.component';
+import { DialoginfoorderComponent } from './components/dialoginfoorder/dialoginfoorder.component';
 
 
 @NgModule({
@@ -39,6 +41,8 @@ import { EmptyorderComponent } from './components/emptyorder/emptyorder.componen
     CartListItemComponent,
     DialogordersComponent,
     EmptyorderComponent,
+    DialoguserinfoComponent,
+    DialoginfoorderComponent,
   ],
   imports: [
     HttpClientModule,

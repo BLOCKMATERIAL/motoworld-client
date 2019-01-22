@@ -1,0 +1,24 @@
+<div class="container">
+
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Укажите свои данные</h4>
+  </div>
+
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="recipient-name" class="col-form-label">First Name</label>
+        <input type="text" [(ngModel)]="object.name" name="name" class="form-control"  id="recipient-name">
+        <label for="recipient-name" class="col-form-label">Last Name</label>
+        <input type="text" [(ngModel)]="object.name" name="name" class="form-control"  id="recipient-name">
+        <label for="recipient-name" class="col-form-label">Address</label>
+        <input type="text" [(ngModel)]="object.name" name="name" class="form-control"  id="recipient-name">
+        <span>Total Price:   $</span>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary">Подтвердить</button>
+  </div>
+</div>

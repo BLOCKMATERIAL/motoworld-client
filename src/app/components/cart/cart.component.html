@@ -2,5 +2,5 @@
   <app-cart-list-item *ngFor="let item of items" [item]="item" [callback]="callback"></app-cart-list-item>
 </div>
 <div class="button">
-  <button>Оформить заказ</button>
+  <button [routerLink]="['/dialoguseinfo/']">Оформить заказ</button>
 </div>
