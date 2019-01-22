@@ -10,6 +10,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { AccountComponent } from './components/account/account.component';
 import {DialogproductsComponent} from "./components/dialogproducts/dialogproducts.component";
 import {DialogcategoriesComponent} from "./components/dialogcategories/dialogcategories.component";
+import {EmptyorderComponent} from "./components/emptyorder/emptyorder.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +22,9 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'products/:id', component: DialogproductsComponent},
   { path: 'categories/:id', component: DialogcategoriesComponent},
-  { path: 'account', component: AccountComponent}
+  { path: 'account', component: AccountComponent},
+  { path: 'emptyorder', component: EmptyorderComponent}
+
 ];
 
 @NgModule({
