@@ -36,5 +36,4 @@ export class CartListItemComponent implements OnInit {
     this.item.count += increase ? 1 : -1;
     this.callback.onItemQuantityChanged(this.item.itemId, increase);
   }
-
 }
