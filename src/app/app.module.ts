@@ -19,6 +19,7 @@ import { DialogproductsComponent } from './components/dialogproducts/dialogprodu
 import { DialogcategoriesComponent } from './components/dialogcategories/dialogcategories.component';
 import { CartListItemComponent } from './components/cart-list-item/cart-list-item.component';
 import {FormsModule} from "@angular/forms";
+import { DialogordersComponent } from './components/dialogorders/dialogorders.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {FormsModule} from "@angular/forms";
     AccountComponent,
     DialogproductsComponent,
     DialogcategoriesComponent,
-    CartListItemComponent
+    CartListItemComponent,
+    DialogordersComponent
   ],
   imports: [
     HttpClientModule,
