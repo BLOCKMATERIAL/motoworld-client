@@ -21,15 +21,15 @@ export class CategoryService {
   }
 
   create(product: Category) {
-    return this.http.post(CategoryService.url, product);
+    return this.http.post<Category>(CategoryService.url, product);
   }
 
   update(product: Category) {
-    return this.http.put(CategoryService.url + '/' + product._id, product);
+    return this.http.put<Category>(CategoryService.url + '/' + product._id, product);
   }
 
   delete(id: number) {
-    return this.http.delete(CategoryService.url + '/' + id);
+    return this.http.delete<Category>(CategoryService.url + '/' + id);
   }
 
 }

@@ -47,7 +47,8 @@ export class AccountComponent implements OnInit {
   }
 
   onItemClick(itemId: string) {
-    let endpoint = `/${this.currentType}/${itemId}`;
+    const id = itemId ? itemId : 'new-item'
+    let endpoint = `/${this.currentType}/${id}`;
     this.router.navigate([endpoint]);
   }
 
