@@ -24,7 +24,7 @@
         <label for="message-text" class="col-form-label">Описание товара</label>
         <textarea [(ngModel)]="object.description" name="description" class="form-control" id="message-text"></textarea>
       </div>
-      <input type="url" name="url" id="url"  placeholder="https://urlphoto"
+      <input [(ngModel)]="object.image" type="url" name="url" id="url"  placeholder="https://urlphoto"
              pattern="https://.*" size="30"
              required>
     </form>

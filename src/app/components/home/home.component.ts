@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
     fetch('http://motoworld.me/categories')
       .then(resp => resp.json())
       .then(data => {
+        console.log(data);
         this.categories = data;
       });
   }
