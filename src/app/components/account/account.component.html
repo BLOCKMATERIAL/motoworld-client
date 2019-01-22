@@ -3,7 +3,7 @@
     <ul class="ul-main">
       <li *ngFor="let objType of objectTypes" (click)="changeType(objType.type)">
         <span>{{objType.name}}</span>
-        <button (click)="onItemClick(obj)">Создать</button>
+        <button *ngIf="objType.type != 'orders'" (click)="onItemClick(obj)">Создать</button>
       </li>
     </ul>
   </div>
