@@ -35,7 +35,19 @@ export class ItemInfoComponent implements OnInit {
   }
 
   addToCart() {
-    this.service.addItem(this.currentItemId, 1);
-    console.log(this.service.getStoredCart());
+    let inCart = false;
+    let cart = this.service.getStoredCart();
+    for (var ct in cart) {
+      if(this.currentItemId === cart[ct].itemId) {
+        inCart = true;
+      }
+    }
+    
+    if(inCart) {
+      this.service.changeQuantity(this.currentItemId, true);
+      console.log("outaasdasdas");
+    } else {
+      this.service.addItem(this.currentItemId, 1);
+    }
   }
 }
