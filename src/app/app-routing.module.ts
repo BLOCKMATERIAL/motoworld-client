@@ -12,6 +12,7 @@ import {DialogproductsComponent} from "./components/dialogproducts/dialogproduct
 import {DialogcategoriesComponent} from "./components/dialogcategories/dialogcategories.component";
 import {EmptyorderComponent} from "./components/emptyorder/emptyorder.component";
 import {DialoguserinfoComponent} from "./components/dialoguserinfo/dialoguserinfo.component";
+import {DialoginfoorderComponent} from "./components/dialoginfoorder/dialoginfoorder.component";
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'categories/:id', component: DialogcategoriesComponent},
   { path: 'account', component: AccountComponent},
   { path: 'emptyorder', component: EmptyorderComponent},
-  { path: 'dialoguseinfo', component: DialoguserinfoComponent}
+  { path: 'dialoguseinfo', component: DialoguserinfoComponent},
+  { path: 'dialoginfoorder', component: DialoginfoorderComponent}
 
 
 ];

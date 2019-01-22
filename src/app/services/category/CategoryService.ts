@@ -28,7 +28,7 @@ export class CategoryService {
     return this.http.put<Category>(CategoryService.url + '/' + product._id, product);
   }
 
-  delete(id: number) {
+  delete(id: string) {
     return this.http.delete<Category>(CategoryService.url + '/' + id);
   }
 

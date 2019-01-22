@@ -28,7 +28,7 @@ export class ProductService {
     return this.http.put<Product>(ProductService.url + '/' + product._id, product);
   }
 
-  delete(id: number) {
+  delete(id: string) {
     return this.http.delete(ProductService.url + '/' + id);
   }
 
