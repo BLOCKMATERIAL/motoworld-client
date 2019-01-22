@@ -4,14 +4,14 @@
       <div class="image-area">
         <img [src]="image">
       </div>
+    <article>
+      <h2>О товаре</h2>
+      <p>{{description}}</p>
+    </article>
       <div class="action-area">
-          <span>{{description}}</span>
-          <button (click)="addToCart()" ><img src="../../../assets/icon/ic_cart.png" /><span>Добавить в корзину</span></button>
+        <button [routerLink]="['/cart/']" (click)="addToCart()" ><img src="../../../assets/icon/ic_cart.png" /><span>Добавить в корзину</span></button>
       </div>
   </div>
 
-  <article>
-    <h2>О товаре</h2>
-    <p>fuck this shit fuck this shitfuck this shit fuck this shit fuck this shit fuck this shit fuck this shit</p>
-  </article>
+
 </div>

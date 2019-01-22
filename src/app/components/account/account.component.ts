@@ -1,5 +1,6 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -9,29 +10,57 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class AccountComponent implements OnInit {
 
-  public modalRef: BsModalRef; // {1}
-  constructor(private modalService: BsModalService) {} // {2}
+  static DOMAIN = "http://motoworld.me/";
 
-  public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template); // {3}
+  static TYPE_ORDERS = 'orders';
+  static TYPE_PRODUCTS = 'products';
+  static TYPE_CATEGORIES = 'categories';
+
+  private currentType = AccountComponent.TYPE_ORDERS;
+  public objects = [];
+
+  constructor(protected router: Router) {} // {2}
+
+  changeType(type: string) {
+    this.currentType = type;
+    this.loadItem();
   }
 
   objectTypes = [
-    { type: "order", name:"Orders" },
-    { type: "product", name:"Products" },
-    { type: "categories", name:"Categories" }
+    { type: AccountComponent.TYPE_ORDERS, name:"Orders" },
+    { type: AccountComponent.TYPE_PRODUCTS, name:"Products" },
+    { type: AccountComponent.TYPE_CATEGORIES, name:"Categories" }
   ];
-  chosenType = this.objectTypes[0];
-
 
   ngOnInit() {
+    this.loadItem()
   }
 
-  onTypeChosen(type) {
-      this.chosenType = type;
-      console.log(this.chosenType);
+  loadItem() {
+    fetch(AccountComponent.DOMAIN + this.currentType)
+      .then(objects => {
+        return objects.json()
+      })
+      .then( objects => {
+        this.objects = objects;
+    })
   }
 
+  onItemClick(itemId: string) {
+    let endpoint = `/${this.currentType}/${itemId}`;
+    this.router.navigate([endpoint]);
+  }
+
+  getItemContent(object) {
+    switch (this.currentType) {
+      case AccountComponent.TYPE_ORDERS: return object._id;
+      default: return object.name;
+    }
+  }
+
+  getRouterLink() {
+    return `/${this.currentType}`
+  }
 }
 
 

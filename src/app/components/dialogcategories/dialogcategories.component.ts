@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import {ActivatedRoute} from "@angular/router";
 
 
 @Component({
@@ -9,29 +9,21 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 })
 export class DialogcategoriesComponent implements OnInit {
 
-  public modalRef: BsModalRef; // {1}
-  constructor(private modalService: BsModalService) {} // {2}
+  object = {};
 
-  public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template); // {3}
-  }
-
-  objectTypes = [
-    { type: "order", name:"Orders" },
-    { type: "product", name:"Products" },
-    { type: "categories", name:"Categories" }
-  ];
-  chosenType = this.objectTypes[0];
-
+  constructor(private  router: ActivatedRoute) {} // {2}
 
   ngOnInit() {
+    let id = this.router.snapshot.params.id;
+    if (id.startsWith('new')) {
+      return;
+    }
+    fetch(`http://motoworld.me/categories/${id}`)
+      .then(value => value.json())
+      .then(object => {
+        this.object = object
+      })
   }
-
-  onTypeChosen(type) {
-    this.chosenType = type;
-    console.log(this.chosenType);
-  }
-
 }
 
 

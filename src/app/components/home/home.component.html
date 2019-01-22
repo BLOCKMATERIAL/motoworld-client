@@ -2,7 +2,7 @@
 
   <div class="menu">
     <ul class="ul-main" >
-      <div class="text"><u>Categories</u></div>
+      <div class="text">Categories</div>
       <li (click)=retrieveProducts()>All</li>
       <li *ngFor="let category of categories" (click)=onCategoryChanged(category)>
         <a>{{category.name}}</a>

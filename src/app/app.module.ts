@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { DialogproductsComponent } from './components/dialogproducts/dialogproducts.component';
 import { DialogcategoriesComponent } from './components/dialogcategories/dialogcategories.component';
 import { CartListItemComponent } from './components/cart-list-item/cart-list-item.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { CartListItemComponent } from './components/cart-list-item/cart-list-ite
     CartListItemComponent
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     ModalModule.forRoot(),

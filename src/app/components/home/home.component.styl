@@ -7,66 +7,87 @@ accent-color = #FFFFFF
 primary-text-color = #B00000
 secondary-text-color = primary-dark-color
 .container
+  display: flex;
+  max-width: 1070px
+  margin: auto;
+  //border: solid 2px primary-grey-color
+
+  .menu
+    width: 300px;
+    border-right: solid 2px primary-grey-color
+    background: primary-grey-color
+
+    a
+      text-decoration: none
+      color: black
+
+    .ul-main
+      li
+        font-size: 23px
+        list-style-type: none;
+
+
+    .ul-sub
+      li
+        font-size: 20px
+
+
+  .items-wrapper
+    width: 100%;
+    // border:solid 1px blue;
     display: flex;
-    max-width: 1070px
-    margin: auto;
-    border: solid 2px primary-grey-color
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
-    .menu
-        width: 300px;
-        border-right: solid 2px primary-grey-color
-        background: primary-grey-color
-        a
-            text-decoration: none
-            color: black
+    .box
+      width: 200px;
+      text-align: center;
+      border: solid 1px primary-grey-color
+      margin: 20px;
+      padding-bottom: 20px;
 
-        .ul-main
-            li
-                font-size:23px
-                list-style-type: none;
+      h1
+        font-size: 16px
 
+      p
+        color: primary-text-color
+        margin: 10px 0
 
-        .ul-sub
-            li
-                font-size:20px
+      .price
+        color: black
 
-                
-    .items-wrapper
+      img
         width: 100%;
-        // border:solid 1px blue;
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
 
-        .box
-            width: 200px;
-            text-align: center;
-            border: solid 1px primary-grey-color
-            margin: 20px;
-            padding-bottom: 20px;
+      button
+        background: primary-text-color
+        border: none
+        padding: 5px 30px
+        color: white;
+        font-family SecondaryColumbia
+        font-size: 18px
+        cursor: pointer
+        outline: none
 
-            h1
-                font-size:16px
-            p 
-                color:primary-text-color
-                margin: 10px 0
-            .price
-              color:black
-            img 
-                width:100%;
-            button
-                background:primary-text-color
-                border:none
-                padding: 5px 30px
-                color: white;
-                font-family SecondaryColumbia
-                font-size: 18px
-                cursor: pointer
-                outline: none
-                &:hover
-                    box-shadow: 5px 5px #888888;
-                
-    .text
-      font-size 25px
+        &:hover
+          box-shadow: 5px 5px #888888;
+          li
+           cursor: pointer
+           list-style none
+           transition transform 0.5s
+
+
+  .text
+    font-size 25px
+    color primary-text-color;
+
+li
+  cursor: pointer
+  list-style none
+  transition transform 0.5s
+
+  &:hover
+    color red
+    transform translate(20px)
 
 

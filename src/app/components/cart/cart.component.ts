@@ -7,7 +7,6 @@ import {CartService} from "../../services/cart/cart.service";
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.styl'],
   providers: [CartService]
-
 })
 export class CartComponent implements OnInit, OnItemInteract {
 

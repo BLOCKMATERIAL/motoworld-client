@@ -1,12 +1,14 @@
 <div class="container">
-
   <div class="menu">
     <ul class="ul-main">
-      <li *ngFor="let type of objectTypes" (click)="onTypeChosen(type)">
-        <span>{{type.name}}</span>
-        <button> <a routerLink="/dialogproducts">Создать</a></button>
+      <li *ngFor="let objType of objectTypes" (click)="changeType(objType.type)">
+        <span>{{objType.name}}</span>
+        <button (click)="onItemClick(obj)">Создать</button>
       </li>
     </ul>
+  </div>
+  <div class="items">
+    <li *ngFor="let object of objects" (click)="onItemClick(object._id)">{{getItemContent(object)}}</li>
   </div>
 </div>
 <router-outlet></router-outlet>

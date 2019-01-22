@@ -19,9 +19,9 @@ const routes: Routes = [
   { path: 'item-info/:currentItemId', component: ItemInfoComponent },
   { path: 'contacts', component: ContactsComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'dialogproducts', component: DialogproductsComponent},
-  { path: 'account', component: AccountComponent},
-  { path: 'dialogcategories', component: DialogcategoriesComponent}
+  { path: 'products/:id', component: DialogproductsComponent},
+  { path: 'categories/:id', component: DialogcategoriesComponent},
+  { path: 'account', component: AccountComponent}
 ];
 
 @NgModule({

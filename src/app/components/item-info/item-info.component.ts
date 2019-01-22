@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CartService} from "../../services/cart/cart.service";
+import {BsModalService} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-item-info',
@@ -16,7 +17,11 @@ export class ItemInfoComponent implements OnInit {
   image: string;
   description: string;
 
-  constructor(private service: CartService, private  router: ActivatedRoute) {}
+  constructor(
+    private modalService: BsModalService,
+    private service: CartService,
+    private  router: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.currentItemId = this.router.snapshot.params.currentItemId;
