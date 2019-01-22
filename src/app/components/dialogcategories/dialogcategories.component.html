@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Добавление новой категории</h4>
+    <h4 class="modal-title pull-left">{{create ? "Добавление новой категории" : "Редактирование категории"}}</h4>
   </div>
 
   <div class="modal-body">
@@ -14,7 +14,7 @@
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary">Удалить</button>
-    <button type="button" class="btn btn-primary">Добавить</button>
+    <button type="button" class="btn btn-primary" (click)="onItemRemoveClick()">Удалить</button>
+    <button type="button" class="btn btn-primary" (click)="onSubmitClick()">Добавить</button>
   </div>
 </div>

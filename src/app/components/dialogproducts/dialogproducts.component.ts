@@ -57,7 +57,6 @@ export class DialogproductsComponent implements OnInit {
   }
 
   onDeleteClick() {
-    console.log("HERE");
     if (this.create) {
       this.object = new Product();
     } else {
