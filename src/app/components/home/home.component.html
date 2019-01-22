@@ -2,6 +2,7 @@
 
   <div class="menu">
     <ul class="ul-main" >
+      <div class="text">Categories</div>
       <li (click)=retrieveProducts()>All</li>
       <li *ngFor="let category of categories" (click)=onCategoryChanged(category)>
         <a>{{category.name}}</a>
@@ -10,11 +11,11 @@
   </div>
   <div class="items-wrapper">
     <div class="box"  *ngFor="let product of products">
-        <img src="../../../assets/icon/ic_google.png" alt="">
+      <p><img src="{{product.image}}" ></p>
         <h1>{{product.name}}</h1>
         <p>{{product.description}}</p>
         <p class="price">{{product.price}}$</p>
-        <button>КУПИТЬ</button>
+        <button [routerLink]="['/item-info/', product._id]">КУПИТЬ</button>
     </div>
 
   </div>

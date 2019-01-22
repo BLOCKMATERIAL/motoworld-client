@@ -1,0 +1,55 @@
+primary-dark-color = #4E4E4E
+primary-grey-color = #F5F5F5
+
+primary-color = #FFFFFF
+accent-color = #FFFFFF
+
+primary-text-color = #B00000
+secondary-text-color = primary-dark-color
+.container
+  display: flex;
+  max-width: 1070px
+  margin: auto;
+
+  .menu
+    width: 300px;
+    border-right: solid 2px primary-grey-color
+    background: primary-grey-color
+
+    a
+      text-decoration: none
+      color: black
+
+    .ul-main
+      li
+        font-size: 26px
+        list-style-type: none;
+
+    .ul-sub
+      li
+        font-size: 20px
+
+    button
+      background: primary-text-color
+      border: none
+      padding: 1px 15px
+      color: white;
+      font-family SecondaryColumbia
+      font-size: 10px
+      cursor: pointer
+      outline: none
+
+      &:hover
+        box-shadow: 5px 5px #888888;
+
+
+  .items
+    padding 10px
+    li
+      cursor: pointer
+      list-style none
+      transition transform  0.5s
+      &:hover
+       color red
+       transform translate(20px)
+
