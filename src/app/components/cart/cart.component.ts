@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CartItem} from "../../services/cart/CartItem";
 import {CartService} from "../../services/cart/cart.service";
+import {OrderService} from '../../services/orders/OrderService';
+import {OrderedProduct} from '../../services/orders/local/OrderedProduct';
 
 @Component({
   selector: 'app-cart',
@@ -10,27 +12,31 @@ import {CartService} from "../../services/cart/cart.service";
 })
 export class CartComponent implements OnInit, OnItemInteract {
 
-  items: CartItem[] = [];
+  items: OrderedProduct[] = [];
   callback: OnItemInteract;
 
-  constructor(private service: CartService) {
+  constructor(private orderService: OrderService) {
     this.refresh();
     this.callback = this;
   }
 
   refresh() {
-    this.items = this.service.getStoredCart();
+    this.items = this.orderService.localOrder.orderedProducts;
   }
 
   ngOnInit() {
   }
 
   onItemQuantityChanged(id: string, increase: boolean) {
-    this.service.changeQuantity(id, increase);
+    if (increase) {
+      this.orderService.increment(id);
+    } else {
+      this.orderService.decrement(id);
+    }
   }
 
   onItemRemoved(id: string) {
-    this.service.remove(id);
+    this.orderService.removeProduct(id);
     this.refresh();
   }
 }

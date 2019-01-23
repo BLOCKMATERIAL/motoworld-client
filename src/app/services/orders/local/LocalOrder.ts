@@ -23,6 +23,7 @@ export class LocalOrder {
   }
 
   addProduct(product: OrderedProduct) {
+    console.log(product.id);
     const index = this._orderedProducts.findIndex(s => s.id === product.id);
     if (index === -1) {
       this._orderedProducts.push(product);

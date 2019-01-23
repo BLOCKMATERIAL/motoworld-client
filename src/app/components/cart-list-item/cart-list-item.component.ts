@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CartItem} from "../../services/cart/CartItem";
-import {Attribute} from "@angular/compiler";
+import {CartItem} from '../../services/cart/CartItem';
+import {Attribute} from '@angular/compiler';
+import {OrderedProduct} from '../../services/orders/local/OrderedProduct';
 
 @Component({
   selector: 'app-cart-list-item',
@@ -8,32 +9,22 @@ import {Attribute} from "@angular/compiler";
   styleUrls: ['./cart-list-item.component.styl']
 })
 export class CartListItemComponent implements OnInit {
-  @Input() item: CartItem;
+  @Input() item: OrderedProduct;
   @Input() callback: OnItemInteract;
-  name: string = null;
-  image: string = null;
-  description: string = null;
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit() {
-    fetch(`http://motoworld.me/products/${this.item.itemId}`)
-      .then(value => {
-        return value.json()
-      })
-      .then(item => {
-        this.name = item.name;
-        this.image = item.image;
-        this.description = item.description;
-      });
+
   }
 
   onItemRemoved() {
-    this.callback.onItemRemoved(this.item.itemId);
+    this.callback.onItemRemoved(this.item.id);
   }
 
   onItemQuantityChanged(increase: boolean) {
-    this.item.count += increase ? 1 : -1;
-    this.callback.onItemQuantityChanged(this.item.itemId, increase);
+    this.item.increment()
+    this.callback.onItemQuantityChanged(this.item.id, increase);
   }
 }

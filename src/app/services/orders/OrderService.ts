@@ -2,7 +2,16 @@ import {LocalOrder} from './local/LocalOrder';
 import {HttpClient} from '@angular/common/http';
 import {RemoteOrder} from './remote/output/RemoteOrder';
 import {RemoteOrderItem} from './remote/output/RemoteOrderItem';
+import {InputTypeOrder} from './remote/input/InputTypeOrder';
+import {InputOrder} from './remote/input/InputOrder';
+import {Injectable} from '@angular/core';
+import {Product} from '../product/Product';
+import {OrderedProduct} from './local/OrderedProduct';
+import {UserInfo} from './UserInfo';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class OrderService {
 
   private static url = 'http://motoworld.me/orders';
@@ -33,17 +42,40 @@ export class OrderService {
 
   submitOrder() {
     const localOrder = this.localOrder;
-    const remoteOrder = new RemoteOrder('', localOrder.delivery, localOrder.orderedProducts.map(
+    const remoteOrder = new RemoteOrder('5c476ef846e5e378fc702415', localOrder.delivery, localOrder.orderedProducts.map(
       (p, i) => new RemoteOrderItem(p.id, p.quantity)
     ));
-    return this.http.post(OrderService.url, remoteOrder);
+    console.log(remoteOrder);
+    return this.http.post<any>(OrderService.url, remoteOrder);
   }
 
   save(order: LocalOrder) {
     this._sessionStorage.setItem(OrderService.ORDER_KEY, order.toString());
   }
 
+  getRemote(id: string) {
+    return this.http.get<InputOrder>(`${OrderService.url}/${id}`);
+  }
+
   clear() {
     this._sessionStorage.clear();
+  }
+
+  setupUserInfo(info: UserInfo) {
+    const local = this.localOrder;
+    local.delivery = info.stringify();
+    this.save(local);
+  }
+
+  addProduct(product: Product) {
+    const local = this.localOrder;
+    local.addProduct(new OrderedProduct(product, 1));
+    this.save(local);
+  }
+
+  removeProduct(id: string) {
+    const local = this.localOrder;
+    local.removeProduct(id);
+    this.save(local);
   }
 }
