@@ -1,20 +1,18 @@
 import {Component, OnInit} from '@angular/core';
+import {FetchService} from '../../services/fetch/FetchService';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.styl']
+  styleUrls: ['./home.component.styl'],
+  providers: [FetchService]
 })
 export class HomeComponent implements OnInit {
   products = [];
   categories = [];
-  chosenCategory = null;
 
-  constructor() {
+  constructor(private fetchService: FetchService) {
   }
-
-//call the fetch function
-
 
   ngOnInit() {
     this.retrieveProducts();
@@ -22,28 +20,17 @@ export class HomeComponent implements OnInit {
   }
 
   retrieveProducts() {
-    fetch('http://motoworld.me/products?pageSize=1')
-      .then(resp => resp.json())
-      .then(data => {
-        this.products = data;
-      });
+    this.fetchService.fetch('http://motoworld.me/products')
+      .subscribe(data => this.products = data);
   }
 
   retrieveCategories() {
-    fetch('http://motoworld.me/categories')
-      .then(resp => resp.json())
-      .then(data => {
-        console.log(data);
-        this.categories = data;
-      });
+    this.fetchService.fetch('http://motoworld.me/categories')
+      .subscribe(data => this.categories = data);
   }
 
   onCategoryChanged(category) {
-    console.log(category);
-    fetch(`http://motoworld.me/categories/${category._id}/products`)
-      .then(resp => resp.json())
-      .then(data => {
-        this.products = data;
-      });
+    this.fetchService.fetch(`http://motoworld.me/categories/${category._id}/products`)
+      .subscribe(data => this.products = data);
   }
 }

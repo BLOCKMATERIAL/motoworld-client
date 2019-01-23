@@ -1,37 +1,25 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthenticationService {
 
-  public token: string;
-  private url = 'http://localhost:8080/api/auth/login';
+  private static USER = 'user';
+  private _sessionStorage: Storage;
 
-  constructor(private http: HttpClient) {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser && currentUser.token;
+  constructor() {
+    this._sessionStorage = sessionStorage;
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(this.url, { username: username, password: password })
-      .pipe(
-        map(user => {
-          // login bem-sucedido se houver um token jwt na resposta
-          if (user && user.token) {
-            // armazenar detalhes do usuário e token jwt no localStorage para manter o usuário logado entre as atualizações da página
-            localStorage.setItem('currentUser', JSON.stringify(user));
-          }
-
-          return user;
-        })
-      );
+  public writeUser(header: string, userId: string) {
+    const user = {header: header, userId: userId};
+    this._sessionStorage.setItem(AuthenticationService.USER, JSON.stringify(user));
   }
 
-  logout(): void {
-    // Limpa o token removendo o usuário do local store para efetuar o logout
-    this.token = null;
-    localStorage.removeItem('currentUser');
+  public get user() {
+    return JSON.parse(this._sessionStorage.getItem(AuthenticationService.USER));
   }
 }

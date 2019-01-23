@@ -1,6 +1,7 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import {Router} from "@angular/router";
+import {FetchService} from '../../services/fetch/FetchService';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class AccountComponent implements OnInit {
   private currentType = AccountComponent.TYPE_ORDERS;
   public objects = [];
 
-  constructor(protected router: Router) {} // {2}
+  constructor(protected router: Router, private fetchService: FetchService) {} // {2}
 
   changeType(type: string) {
     this.currentType = type;
@@ -33,17 +34,12 @@ export class AccountComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.loadItem()
+    this.loadItem();
   }
 
   loadItem() {
-    fetch(AccountComponent.DOMAIN + this.currentType)
-      .then(objects => {
-        return objects.json()
-      })
-      .then( objects => {
-        this.objects = objects;
-    })
+    this.fetchService.fetch(AccountComponent.DOMAIN + this.currentType)
+      .subscribe(data => this.objects = data);
   }
 
   onItemClick(itemId: string) {
@@ -60,7 +56,7 @@ export class AccountComponent implements OnInit {
   }
 
   getRouterLink() {
-    return `/${this.currentType}`
+    return `/${this.currentType}`;
   }
 }
 
