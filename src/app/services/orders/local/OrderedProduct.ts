@@ -6,7 +6,7 @@ export class OrderedProduct {
   }
 
   static parse(json: any) {
-    return new OrderedProduct(new Product(json.product), parseInt(json.quantity, 0));
+    return new OrderedProduct(Product.parse(json._product), parseInt(json._quantity, 0));
   }
 
   increment() {

@@ -1,12 +1,12 @@
 <div class="container">
-  <h1>{{name}}</h1>
+  <h1>{{object.name}}</h1>
   <div class="content">
       <div class="image-area">
-        <img [src]="image">
+        <img [src]="object.image">
       </div>
     <article>
       <h2>О товаре</h2>
-      <p>{{description}}</p>
+      <p>{{object.description}}</p>
     </article>
       <div class="action-area">
         <button [routerLink]="['/cart/']" (click)="addToCart()" ><img src="../../../assets/icon/ic_cart.png" /><span>Добавить в корзину</span></button>

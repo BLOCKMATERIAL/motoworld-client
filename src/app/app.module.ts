@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,10 +19,12 @@ import { DialogproductsComponent } from './components/dialogproducts/dialogprodu
 import { DialogcategoriesComponent } from './components/dialogcategories/dialogcategories.component';
 import { CartListItemComponent } from './components/cart-list-item/cart-list-item.component';
 import {FormsModule} from "@angular/forms";
+
 import { DialogordersComponent } from './components/dialogorders/dialogorders.component';
 import { EmptyorderComponent } from './components/emptyorder/emptyorder.component';
 import { DialoguserinfoComponent } from './components/dialoguserinfo/dialoguserinfo.component';
 import { DialoginfoorderComponent } from './components/dialoginfoorder/dialoginfoorder.component';
+import {CustomHttpInterceptor} from './services/interceptors/CustomHttpInterceptor';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { DialoginfoorderComponent } from './components/dialoginfoorder/dialoginf
     ModalModule.forRoot(),
     TooltipModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

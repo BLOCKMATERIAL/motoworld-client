@@ -25,12 +25,11 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'products/:id', component: DialogproductsComponent},
   { path: 'categories/:id', component: DialogcategoriesComponent},
+  { path: 'orders/:id', component: DialoginfoorderComponent},
   { path: 'account', component: AccountComponent},
   { path: 'emptyorder', component: EmptyorderComponent},
   { path: 'dialoguseinfo', component: DialoguserinfoComponent},
   { path: 'dialoginfoorder', component: DialoginfoorderComponent}
-
-
 ];
 
 @NgModule({

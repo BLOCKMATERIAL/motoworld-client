@@ -3,7 +3,7 @@ import {RemoteOrderItem} from './RemoteOrderItem';
 export class RemoteOrder {
 
   constructor(
-    public userId: string,
+    public user_id: string,
     public delivery: string,
     public items: RemoteOrderItem[]
   ) {}

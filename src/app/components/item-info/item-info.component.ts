@@ -1,7 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {CartService} from "../../services/cart/cart.service";
-import {BsModalService} from "ngx-bootstrap";
+import {CartService} from '../../services/cart/cart.service';
+import {BsModalService} from 'ngx-bootstrap';
+import {OrderService} from '../../services/orders/OrderService';
+import {Product} from '../../services/product/Product';
+import {ProductService} from '../../services/product/ProductService';
 
 @Component({
   selector: 'app-item-info',
@@ -11,43 +14,24 @@ import {BsModalService} from "ngx-bootstrap";
 })
 export class ItemInfoComponent implements OnInit {
 
-  callback: OnItemInteract;
-  currentItemId: string;
-  name: string;
-  image: string;
-  description: string;
+  object: Product = new Product();
 
   constructor(
     private modalService: BsModalService,
-    private service: CartService,
+    private productService: ProductService,
+    private ordersService: OrderService,
     private  router: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
-    this.currentItemId = this.router.snapshot.params.currentItemId;
-    fetch(`http://motoworld.me/products/${this.currentItemId}`)
-      .then(value => value.json())
-      .then(object => {
-        this.name = object.name;
-        this.image = object.image;
-        this.description = object.description;
-      })
+    const id = this.router.snapshot.params.currentItemId;
+    this.productService.getById(id).subscribe(product => {
+      this.object = product;
+    });
   }
 
   addToCart() {
-    let inCart = false;
-    let cart = this.service.getStoredCart();
-    for (var ct in cart) {
-      if(this.currentItemId === cart[ct].itemId) {
-        inCart = true;
-      }
-    }
-    
-    if(inCart) {
-      this.service.changeQuantity(this.currentItemId, true);
-      console.log("outaasdasdas");
-    } else {
-      this.service.addItem(this.currentItemId, 1);
-    }
+    this.ordersService.addProduct(this.object);
   }
 }
